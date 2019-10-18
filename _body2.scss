@@ -1,6 +1,8 @@
 $backgroundcolor: #000;
+$textcolor2: rgb(243, 11, 11);
 body {
     font: 100% "Space Mono", monospace;
+    color: $textcolor;
     margin: 0px;
     padding: 0px;
     background-color: $backgroundcolor;

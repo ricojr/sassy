@@ -1,0 +1,40 @@
+            @mixin shadows {
+                -webkit-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+                -moz-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+                box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+            }
+            
+            article section {
+                flex-grow: 1;
+                flex-basis: 45%;
+                border: 1px silver solid;
+                @include shadows();
+                padding: 16px;
+                margin: 16px;
+                clear: both;
+                overflow: auto;
+                box-sizing: border-box;
+                article code {
+                    background: $backgroundcolor;
+                    border: 1px solid #ddd;
+                    color: #666;
+                    page-break-inside: avoid;
+                    font-family: monospace;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    margin-bottom: 1.6em;
+                    max-width: 100%;
+                    overflow: auto;
+                    padding: 1em 1.5em;
+                    display: block;
+                    word-wrap: break-word;
+                    article code.before {
+                        float: left;
+                        width: 40%;
+                        article code.after {
+                            float: right;
+                            width: 40%
+                        }
+                    }
+                }
+            }

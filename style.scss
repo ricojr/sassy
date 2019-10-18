@@ -1,49 +1,33 @@
-@import "./article";
 @import "./body";
-article {
-    @include flexCenter();
+@import "./article-section";
+@import "./padding";
+html {
+    height: 100%;
+    font-family: 'Montserrat';
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    --bg: #FCFCFC;
+    --bg-panel: #EBEBEB;
+    --color-headings: #0077FF;
+    color: blue;
 }
 
-article section {
-    flex-grow: 1;
-    flex-basis: 45%;
-    border: 1px silver solid;
-    padding: 16px;
-    margin: 16px;
-    clear: both;
-    overflow: auto;
-    box-sizing: border-box;
+html[data-theme='Red'] {
+    --bg: #333333;
+    --bg-panel: #434343;
+    --color-headings: #3694FF;
+    color: rgb(255, 0, 0);
+}
+
+article {
+    display: flex;
+    flex-wrap: wrap
 }
 
 article section#selling-points {
     flex-grow: 2;
     flex-basis: 100%
-}
-
-article code {
-    background: #000;
-    border: 1px solid #ddd;
-    color: #666;
-    page-break-inside: avoid;
-    font-family: monospace;
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 1.6em;
-    max-width: 100%;
-    overflow: auto;
-    padding: 1em 1.5em;
-    display: block;
-    word-wrap: break-word
-}
-
-article code.before {
-    float: left;
-    width: 40%
-}
-
-article code.after {
-    float: right;
-    width: 40%
 }
 
 h1,
@@ -59,29 +43,79 @@ h1 {
 h6 {
     text-align: center;
     font-size: 2em;
-    padding: 32px;
+    padding: $paddingred * 2;
     margin-bottom: 0px
 }
 
-.message,
-.success,
-.error,
-.warning {
+.message {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: $paddingred;
     color: #2748B3;
     background-color: #000;
     width: 100%
 }
 
 .success {
+    @extend .message;
     background-color: green
 }
 
 .error {
+    @extend .message;
     background-color: red
 }
 
 .warning {
+    @extend .message;
     background-color: orange
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked+label {
+    background: var(--color-headings);
+}
+
+input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
 }
